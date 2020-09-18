@@ -26,14 +26,14 @@ function ToolBarViewModel() {
         ToolTypeEnum.RADIO),
       new ToolBarItem("Point Source", "tool_radiant", "point_source",
         ToolTypeEnum.RADIO),
-      self.mirrors = new ToolBarItem("Mirrors", "tool_mirror_", 4, ToolTypeEnum.RADIOLIST, [
+     /* self.mirrors = new ToolBarItem("Mirrors", "tool_mirror_", 4, ToolTypeEnum.RADIOLIST, [
         new ToolBarItem("Segment", "tool_mirror", "mirror",
           ToolTypeEnum.RADIO),
         new ToolBarItem("Circular Arc", "tool_arcmirror", "mirror_arc",
           ToolTypeEnum.RADIO),
         new ToolBarItem("Ideal Curved", "tool_idealmirror", "ideal_curved_mirror",
           ToolTypeEnum.RADIO)
-      ]),
+      ]),*/
       self.glasses = new ToolBarItem("Glasses", "tool_refractor_", 3, ToolTypeEnum.RADIOLIST, [
         new ToolBarItem("Half-plane", "tool_halfplane", "glass_halfplane",
           ToolTypeEnum.RADIO),
@@ -58,10 +58,10 @@ function ToolBarViewModel() {
         ToolTypeEnum.RADIO),
       new ToolBarItem("Extended Rays", "mode_extended_light", "extended_rays",
         ToolTypeEnum.RADIO),
-      new ToolBarItem("All Images", "mode_images", "all_images",
-        ToolTypeEnum.RADIO),
-      new ToolBarItem("Seen by Observer", "mode_observer", "seen_by_observer",
-        ToolTypeEnum.RADIO)
+      // new ToolBarItem("All Images", "mode_images", "all_images",
+      //   ToolTypeEnum.RADIO),
+      // new ToolBarItem("Seen by Observer", "mode_observer", "seen_by_observer",
+      //   ToolTypeEnum.RADIO)
     ]),
     new ToolBarGroup("Settings: ", [
       self.rayDensity = new ToolBarItem("Ray Density", "rayDensity", undefined,

@@ -1665,7 +1665,7 @@ var canvasPainter = {
   };
 
   //"mirror"(鏡子)物件
-  objTypes['mirror'] = {
+/*  objTypes['mirror'] = {
 
   //======================================建立物件=========================================
   create: function(mouse) {
@@ -1709,7 +1709,7 @@ var canvasPainter = {
 
 
 
-  };
+  };*/
 
   //"lens"(透鏡)物件
   objTypes['lens'] = {
@@ -1857,7 +1857,7 @@ var canvasPainter = {
   };
 
   //"idealmirror"(理想曲面鏡)物件
-  objTypes['idealmirror'] = {
+  /*objTypes['idealmirror'] = {
 
   p_name: 'Focal length', //屬性名稱
   p_min: -1000,
@@ -1920,7 +1920,7 @@ var canvasPainter = {
   ctx.fillStyle = 'rgb(255,0,0)';
 
   //單面版畫箭頭(兩方向焦距相反)
-  /*
+  /!*
   if(obj.p>0)
   {
     //畫箭頭(p1)
@@ -1953,7 +1953,7 @@ var canvasPainter = {
     ctx.lineTo(obj.p2.x-per_x*arrow_size_per2-par_x*arrow_size_par,obj.p2.y-per_y*arrow_size_per2-par_y*arrow_size_par);
     ctx.fill();
   }
-  */
+  *!/
 
   //雙面版畫箭頭
   if (obj.p < 0)
@@ -2012,7 +2012,7 @@ var canvasPainter = {
 
 
 
-  };
+  };*/
 
   //"blackline"(黑線)物件
   objTypes['blackline'] = {
@@ -2229,7 +2229,7 @@ var canvasPainter = {
   };
 
   //"arcmirror"(弧形鏡子)物件
-  objTypes['arcmirror'] = {
+ /* objTypes['arcmirror'] = {
 
   //======================================建立物件=========================================
   create: function(mouse) {
@@ -2544,7 +2544,7 @@ var canvasPainter = {
 
 
 
-  };
+  };*/
 
   //"ruler"物件
   objTypes['ruler'] = {
@@ -2854,9 +2854,9 @@ var canvasPainter = {
   var clickExtent_point = 10;
   var clickExtent_point_construct = 10;
   var tools_normal = ['laser', 'radiant', 'parallel', 'blackline', 'ruler', 'protractor', ''];
-  var tools_withList = ['mirror_', 'refractor_'];
-  var tools_inList = ['mirror', 'arcmirror', 'idealmirror', 'lens', 'refractor', 'halfplane', 'circlelens'];
-  var modes = ['light', 'extended_light', 'images', 'observer'];
+  var tools_withList = [ 'refractor_'];
+  var tools_inList = [ 'lens', 'refractor', 'halfplane', 'circlelens'];
+  var modes = ['light', 'extended_light'];
   var xyBox_cancelContextMenu = false;
   var scale = 1;
 
@@ -3622,7 +3622,7 @@ var canvasPainter = {
             }
           }
 
-          if (mode == 'images' && last_ray)
+          /*if (mode == 'images' && last_ray)
           {
             //模式:像
             if (!waitingRays[j].gap)
@@ -3664,7 +3664,7 @@ var canvasPainter = {
             }
 
           }
-
+*/
 
 
 
@@ -4637,7 +4637,7 @@ var canvasPainter = {
     {
       //為"線光學模擬1.0"或之前的格式
       //var str1=document.getElementById("textarea1").value.replace(/"point"|"xxa"/g,"1").replace(/"circle"|"xxf"/g,"5");
-      var str1 = document.getElementById('textarea1').value.replace(/"point"|"xxa"|"aH"/g, '1').replace(/"circle"|"xxf"/g, '5').replace(/"k"/g, '"objs"').replace(/"L"/g, '"p1"').replace(/"G"/g, '"p2"').replace(/"F"/g, '"p3"').replace(/"bA"/g, '"exist"').replace(/"aa"/g, '"parallel"').replace(/"ba"/g, '"mirror"').replace(/"bv"/g, '"lens"').replace(/"av"/g, '"notDone"').replace(/"bP"/g, '"lightAlpha"').replace(/"ab"|"observed_light"|"observed_images"/g, '"observer"');
+      var str1 = document.getElementById('textarea1').value.replace(/"point"|"xxa"|"aH"/g, '1').replace(/"circle"|"xxf"/g, '5').replace(/"k"/g, '"objs"').replace(/"L"/g, '"p1"').replace(/"G"/g, '"p2"').replace(/"F"/g, '"p3"').replace(/"bA"/g, '"exist"').replace(/"aa"/g, '"parallel"').replace(/"bv"/g, '"lens"').replace(/"av"/g, '"notDone"').replace(/"bP"/g, '"lightAlpha"').replace(/"ab"|"observed_light"|"observed_images"/g, '"observer"');
       jsonData = JSON.parse(str1);
       if (!jsonData.objs)
       {
@@ -4729,15 +4729,8 @@ var canvasPainter = {
 
     document.getElementById('tool_' + tool).className = 'toolbtnselected';
     AddingObjType = tool;
-    if (tool == "mirror_") {
-      var t = window.toolBarViewModel.mirrors.selected();
-      if (t == "Segment")
-        AddingObjType = "mirror";
-      else if (t == "Circular Arc")
-        AddingObjType = "arcmirror";
-      else if (t == "Ideal Curved")
-        AddingObjType = "idealmirror";
-    } else if (tool == "refractor_") {
+
+   if (tool == "refractor_") {
       var t = window.toolBarViewModel.glasses.selected();
       if (t == "Half-plane")
         AddingObjType = "halfplane";
@@ -4999,20 +4992,16 @@ var canvasPainter = {
     document.getElementById('tool_parallel').dataset['p'] = getMsg('brightness');
 
     //Mirror▼
-    document.getElementById('tool_mirror_').value = getMsg('toolname_mirror_') + downarraw;
+    //document.getElementById('tool_mirror_').value = getMsg('toolname_mirror_') + downarraw;
 
     //Mirror->Line
-    document.getElementById('tool_mirror').value = getMsg('tooltitle_mirror');
-    document.getElementById('tool_mirror').dataset['n'] = getMsg('toolname_mirror_');
+    //ument.getElementById('tool_mirror').value = getMsg('tooltitle_mirror');
+    //document.getElementById('tool_mirror').dataset['n'] = getMsg('toolname_mirror_');
 
     //Mirror->Circular Arc
-    document.getElementById('tool_arcmirror').value = getMsg('tooltitle_arcmirror');
-    document.getElementById('tool_arcmirror').dataset['n'] = getMsg('toolname_mirror_');
+    //
 
-    //Mirror->Curve (ideal)
-    document.getElementById('tool_idealmirror').value = getMsg('tooltitle_idealmirror');
-    document.getElementById('tool_idealmirror').dataset['n'] = getMsg('toolname_idealmirror');
-    document.getElementById('tool_idealmirror').dataset['p'] = getMsg('focallength');
+
 
     //Refractor▼
     document.getElementById('tool_refractor_').value = getMsg('toolname_refractor_') + downarraw;
@@ -5058,8 +5047,8 @@ var canvasPainter = {
     document.getElementById('modebar_title').innerHTML = getMsg('modebar_title');
     document.getElementById('mode_light').value = getMsg('modename_light');
     document.getElementById('mode_extended_light').value = getMsg('modename_extended_light');
-    document.getElementById('mode_images').value = getMsg('modename_images');
-    document.getElementById('mode_observer').value = getMsg('modename_observer');
+    // document.getElementById('mode_images').value = getMsg('modename_images');
+    // document.getElementById('mode_observer').value = getMsg('modename_observer');
     document.getElementById('rayDensity_title').innerHTML = getMsg('raydensity');
 
 

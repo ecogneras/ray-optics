@@ -31,9 +31,9 @@ class ToolBarItem {
     this.description = "";//description;
 
     //Warning: Dirty code below.
-    if (this.name == "Mirrors")
-      this.description = 4;
-    else if (this.name == "Glasses")
+    /*if (this.name == "Mirrors")
+      this.description = 4;*/
+    if (this.name == "Glasses")
       this.description = 3;
     else
       this.description = getMsg(this.id + "_popover");
